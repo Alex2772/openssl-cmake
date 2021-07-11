@@ -45,7 +45,7 @@ include_directories( BEFORE SYSTEM
 
 add_library( ssl ${LIBSRC} )
 
-target_include_directories( ssl PUBLIC ${PROJECT_BINARY_DIR}/include )
+target_include_directories( ssl PRIVATE ${PROJECT_BINARY_DIR}/include )
 
 target_link_libraries( ssl crypto )
 
