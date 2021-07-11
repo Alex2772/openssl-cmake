@@ -209,19 +209,3 @@ configure_file(
   ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake IMMEDIATE @ONLY
 )
 
-if( ${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME} )
-  add_custom_target(
-    "uninstall"
-    ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake
-  )
-endif()
-
-# Generate the package target
-set( CPACK_GENERATOR ZIP TGZ )
-set( CPACK_PACKAGE_NAME "${CMAKE_PROJECT_NAME}" )
-set( CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR} )
-set( CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR} )
-set( CPACK_PACKAGE_VERSION_PATCH ${VERSION_PATCH} )
-set( CPACK_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}-${VERSION_STRING}" )
-
-include( CPack )
