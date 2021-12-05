@@ -57,11 +57,7 @@ if( ANDROID )
 endif()
 
 if( MSVC )
-  if( CMAKE_SIZEOF_VOID_P EQUAL 8 )
-    set_target_properties( ssl PROPERTIES OUTPUT_NAME "ssl-x64" )
-  elseif( CMAKE_SIZEOF_VOID_P EQUAL 4 )
-    set_target_properties( ssl PROPERTIES OUTPUT_NAME "ssl" )
-  endif()
+  set_target_properties( ssl PROPERTIES OUTPUT_NAME "ssl" )
 endif()
 
 install( TARGETS ssl
