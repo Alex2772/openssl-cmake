@@ -94,7 +94,7 @@ jobs:
         with:
           allowUpdates: true
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: ${{ github.ref }}
           draft: false
           prerelease: false
     outputs:
