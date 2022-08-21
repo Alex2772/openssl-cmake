@@ -88,15 +88,11 @@ jobs:
     steps:
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1.1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1.10.0
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          draft: false
-          prerelease: false
+          name: ${{ github.ref }}
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
 
