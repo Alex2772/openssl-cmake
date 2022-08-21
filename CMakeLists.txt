@@ -28,6 +28,7 @@ set( CMAKE_LEGACY_CYGWIN_WIN32 0 )
 project( openssl )
 cmake_minimum_required( VERSION 3.1.0 )
 
+
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 set( CMAKE_DISABLE_SOURCE_CHANGES ON )
 set( CMAKE_DISABLE_IN_SOURCE_BUILD ON )
@@ -192,3 +193,12 @@ configure_file(
   ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake IMMEDIATE @ONLY
 )
 
+
+# aui.boot precompiled binaries
+file(
+        DOWNLOAD
+        https://raw.githubusercontent.com/aui-framework/aui/master/aui.boot.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/aui.boot.cmake)
+include(${CMAKE_CURRENT_BINARY_DIR}/aui.boot.cmake)
+
+auib_precompiled_binary()
