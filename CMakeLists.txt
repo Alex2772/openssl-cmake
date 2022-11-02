@@ -37,10 +37,6 @@ set( CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" )
 
 option( WITH_APPS "Build applications" ON )
 
-if (WIN32)
-  set(CMAKE_DEBUG_POSTFIX d) # needed for CMake's default FindOpenSSL.cmake
-endif()
-
 # OpenSSL version detection imported from FindOpenSSL.cmake
 
 file( STRINGS "${PROJECT_SOURCE_DIR}/include/openssl/opensslv.h" openssl_version_str
