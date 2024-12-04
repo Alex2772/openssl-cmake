@@ -26,8 +26,12 @@
 
 set( CMAKE_LEGACY_CYGWIN_WIN32 0 )
 project( openssl )
-cmake_minimum_required( VERSION 3.1.0 )
+cmake_minimum_required( VERSION 3.16 )
+include( CheckTypeSize )
 
+check_type_size("long" LONG_INT)
+check_type_size("long long" LONG_LONG_INT)
+check_type_size("int" INT)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 set( CMAKE_DISABLE_SOURCE_CHANGES ON )
@@ -142,10 +146,6 @@ if( MINGW )
   set( CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all" )
 endif()
 
-include( CheckTypeSize )
-check_type_size( "long" LONG_INT )
-check_type_size( "long long" LONG_LONG_INT )
-check_type_size( "int" INT )
 if( HAVE_LONG_INT AND (${LONG_INT} EQUAL 8) )
   set( SIXTY_FOUR_BIT_LONG ON )
 elseif( HAVE_LONG_LONG_INT AND (${LONG_LONG_INT} EQUAL 8) )
